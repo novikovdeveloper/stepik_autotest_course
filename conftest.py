@@ -4,15 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as OptionsFirefox
 
-#@pytest.fixture(scope="function")
-#def browser():
-#    print("\nstart browser for test..")
-#    browser = webdriver.Chrome()
-#    browser.implicitly_wait(10)
-#    yield browser
-#    print("\nquit browser..")
-#    browser.quit()
-
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default=None,
@@ -29,6 +20,7 @@ def browser(request):
     options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
     options_firefox = OptionsFirefox()
     options_firefox.set_preference("intl.accept_languages", user_language)
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
