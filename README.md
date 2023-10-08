@@ -2,4 +2,7 @@
 
 Запускать тесты с помощью команды:  
 
-pytest -s -v --tb=line --language=en --browser_name=chrome test_product_page.py 
+pytest -s -v  test_product_page.py  
+
+Старые тесты помечены декоратором @pytest.mark.skip, если их необходимо запустить, то его декоратор нужно убрать  
+
