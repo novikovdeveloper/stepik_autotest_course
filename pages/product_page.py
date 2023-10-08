@@ -21,3 +21,11 @@ class ProductPage(BasePage):
         price_of_product_in_basket = self.browser.find_element(By.CSS_SELECTOR, ".alertinner > p > strong")
         price2 = price_of_product_in_basket.text
         assert price1 == price2, "Цены не совпали"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
+            "Сообщение об успехе показано, хоть не должно"
+
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Сообщение б успехе не исчезло"
